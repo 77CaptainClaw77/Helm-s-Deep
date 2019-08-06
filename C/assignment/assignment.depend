@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1542484820 source:a:\prog\assignment\tree.c
+	<stdio.h>
+	<stdlib.h>
+
+1542534372 source:a:\prog\assignment\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1542546142 source:a:\prog\assignment\pq.c
+	<stdio.h>
+	<stdlib.h>
+

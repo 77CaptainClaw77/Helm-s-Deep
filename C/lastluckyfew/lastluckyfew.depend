@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1541956380 source:a:\prog\lastluckyfew\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1542037574 source:a:\prog\lastluckyfew\uni_int.c
+	<stdio.h>
+	<stdlib.h>
+

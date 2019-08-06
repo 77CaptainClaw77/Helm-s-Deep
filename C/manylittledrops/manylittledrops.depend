@@ -1,0 +1,105 @@
+# depslib dependency file v1.0
+1539006449 source:a:\prog\manylittledrops\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1539008834 source:a:\prog\manylittledrops\sumoffib.c
+	<stdio.h>
+	<stdlib.h>
+
+1539589535 source:a:\prog\manylittledrops\ciircq.c
+	<stdio.h>
+	<stdlib.h>
+
+1546345440 source:a:\prog\c\manylittledrops\prime.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1546345888 source:a:\prog\c\manylittledrops\prime_range.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1546346664 source:a:\prog\c\manylittledrops\prime_sieve.c
+	<stdio.h>
+	<stdlib.h>
+
+1546544182 source:a:\prog\c\manylittledrops\perfect_sieve.cpp
+	<iostream>
+	<cmath>
+
+1546718032 source:a:\prog\c\manylittledrops\box_traversal.cpp
+	<iostream>
+	<string>
+
+1547494378 source:a:\prog\c\manylittledrops\str_test.cpp
+	<iostream>
+	<windows.h>
+	<stdlib.h>
+
+1547581041 source:a:\prog\c\manylittledrops\matrix_text.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+
+1548182514 source:a:\prog\c\manylittledrops\disappointment.cpp
+	<iostream>
+	<iomanip>
+
+1548774379 source:a:\prog\c\manylittledrops\lbset1.cpp
+	<iostream>
+	<string.h>
+	<iomanip>
+	<graphics.h>
+
+1548979022 source:a:\prog\c\manylittledrops\staticattempt.cpp
+	<iostream>
+
+1548981023 source:a:\prog\c\manylittledrops\fastip.cpp
+	<iostream>
+	<stdio.h>
+	<bits/c++io.h>
+	"fastinput.h"
+
+1548981014 a:\prog\c\manylittledrops\fastinput.h
+	<iostream>
+	<stdio.h>
+	<bits/c++io.h>
+
+1549407322 source:a:\prog\c\manylittledrops\timing.cpp
+	<iostream>
+
+1549408018 source:a:\prog\c\manylittledrops\constructortrial.cpp
+	<iostream>
+
+1549413913 source:a:\prog\c\manylittledrops\op_overloading.cpp
+	<iostream>
+
+1550147628 source:a:\prog\c\manylittledrops\testing.c
+
+1550601926 source:a:\prog\c\manylittledrops\alexandrian.cpp
+	<cmath>
+	<cstdio>
+	<vector>
+	<iostream>
+	<algorithm>
+
+1551287694 source:a:\prog\c\manylittledrops\nptel.cpp
+	<iostream>
+
+1551819594 source:a:\prog\c\manylittledrops\cpmplex_op.cpp
+	<iostream>
+
+1552234040 source:a:\prog\c\manylittledrops\music.cpp
+	<windows.h>
+	<mmsystem.h>
+
+1552243059 source:a:\prog\c\manylittledrops\mydatastruct.cpp
+	<iostream>
+	<cstring>
+	<exception>
+
+1552309479 source:a:\prog\c\manylittledrops\bubble_sort.cpp
+	<iostream>
+

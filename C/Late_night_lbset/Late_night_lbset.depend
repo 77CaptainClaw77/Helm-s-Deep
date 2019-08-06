@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1537838689 source:a:\prog\late_night_lbset\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
