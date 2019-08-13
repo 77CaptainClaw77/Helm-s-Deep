@@ -22,6 +22,7 @@ class CircArea{
         System.out.println("Enter the radius of the circle: ");
         Circle circ=new Circle(sc.nextFloat()); 
         System.out.format("The area of the circle with radius %.2f is %.4f\n", circ.radius, circ.getArea());
+        sc.close();
     }
 }
 

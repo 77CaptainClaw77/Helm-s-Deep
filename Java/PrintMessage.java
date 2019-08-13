@@ -15,6 +15,8 @@ public class PrintMessage
             System.out.print("Enter a message: ");
             String message=sc.nextLine();
             System.out.println(message);
+            sc.close();
         }
+        
     }
 }
