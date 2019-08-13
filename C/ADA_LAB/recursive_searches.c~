@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
+int key=0;
+int r_bin_search(int A[],int l,int u)
+{
+  int m=(l+u)/2;
+  if(l<=u)
+    {
+      if(A[m]==key)
+	return m;
+      else
+	{
+	  if(A[m]<key)
+	    r_bin_search(A,m+1,u);
+	  else
+	    r_bin_search(A,l,m-1);
+	}
+    }
+  else
+    return -1;
+    
+}
+int r_lin_search(int A[],int i)
+{
+  if(i<(sizeof(A)/sizeof(A[0])))
+    {
+      if(A[i]==key)
+	return i;
+      return r_lin_search(A,i+1);
+    }
+  else
+    return -1;
+}
+int main()
+{
+  int n,i,choice,fpos;
+  printf("Enter the number of elements to be generated: ");
+  scanf("%d",&n);
+  int arr[n];
+  for(i=0;i<n;i++)
+    {  arr[i]=rand()%(n*100)-n%50;
+      printf("%d\t",arr[i]);
+    }
+  printf("Enter the key element: ");
+  scanf("%d",&key);
+  printf("\n1.Linear Search\n2.Binary Search\nYour Choice: ");
+  scanf("%d",&choice);
+  if(choice==1)
+    fpos=r_lin_search(arr,0);
+  else
+    fpos=r_bin_search(arr,0,n-1);
+  printf("%d",fpos);
+}
