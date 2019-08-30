@@ -1,0 +1,117 @@
+import java.util.*;
+public class Account
+{
+    private int id;
+    private double balance,annualInterestRate;
+    private Date dateCreated;
+    Account()
+    {
+	this.id=0;
+	this.balance=0.0;
+	this.annualInterestRate=0.0;
+	this.dateCreated=Date();
+    }
+    Account(int id,double balance,String date)
+    {
+	this.id=id;
+	this.balance=balance;
+	this.setDate(date);
+    }
+    private void setDate(String date)
+    {
+	if(date=="")
+	    this.dateCreated=Date();
+	else
+	    {
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		try
+		    this.dateCreated=sdf.parse(date);
+		catch(ParseException pe)
+		    System.out.println("Incorrect date format");
+	    }
+    }
+    //-----------------------------
+    //Accessor and Mutator Functions
+    //-----------------------------
+    void setId(int id){ this.id=id; }
+    int getId(){ return this.id; }
+    void setBalance(double balance){ this.balance=balance; }
+    double getBalance(){ return this.balance; }
+    void setInterestRate(double interestRate){ this.annualInterestRate=interestRate; }
+    double getInterestRate(){ return this.annualInterestRate; }
+    void withdraw(double amt)
+    {
+	if(balance-amt<0)
+	    System.out.println("Insufficient Balance");
+	else if(amt<0)
+	    System.out.println("Invalid Amount Entered");
+	else
+	    {
+		balance-=amt;
+		System.out.println("Withdrawl Successful.Remaining Account Balance: "+balance);
+	    }
+    }
+    void deposit(double amt)
+    {
+	if(amt<0)
+	    System.out.println("Invalid Amount Entered");
+	else if(amt+balance>=Double.MAX_VALUE)
+	    System.out.println("Amount too large to be deposited");
+	else
+	    {
+		balance+=amt;
+		System.out.println("Deposit Successful.Remaining Account Balance: "+balance);
+	    }
+    }
+    double getMonthlyInterest()
+    {
+	return ((annualInterestRate/12)*balance);
+    }
+}
+class ExecAccount
+{
+    public static void main(String args[])
+    {
+	Scanner sc=new Scanner(System.in);
+	ArrayList<Account> accounts;
+	while(1)
+	    {
+		System.out.println("1.Create a new Account\n2.Use an Existing Account\n3.Exit");
+		int ch=sc.nextInt();
+		switch(ch)
+		    {
+		    case 1:Account ac=new Account();
+			System.out.print("Enter the account id: ");
+			int id=sc.nextInt();
+			System.out.print("Enter the account balance: ");
+			double bal=sc.nextDouble();
+			System.out.print("Enter a date of creation if necessary (Else press enter to use current date): ");
+			String d=sc.next();
+			ac=Account(id,bal,d);
+			accounts.add(ac);
+			System.out.println("Account Successfully Created");
+			break;
+		    case 2:if(accounts.size()==0)
+			    {
+				System.out.println("No existing accounts");
+				break;
+			    }
+			System.out.print("Enter the account id you want to access: ");
+			int search_id=sc.nextInt();
+			Account ac=null;
+			for(int i=0;i<accounts.size();i++)
+			    if(accounts[i].id==search_id)
+				ac=accounts[i];
+			if(ac==null)
+			    {
+				System.out.println("Account not found");
+				break;
+			    }
+			
+			break;
+		    case 3:
+			break;		    
+		    }
+	    }
+    }
+}

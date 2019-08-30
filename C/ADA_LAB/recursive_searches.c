@@ -1,78 +1,115 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-#include <math.h>
-int key=0,arr_size=0;
-void sort_arr(int A[],int arr_size)
+#include <time.h>
+#include <stdbool.h>
+int comp=0;
+void gen_rand_num(int *arr,int n)
 {
-  int i,j;
-  for(i=0;i<arr_size-1;i++)
+  srand(time(NULL));
+  int i;
+  for(i=0;i<n;i++)
+    arr[i]=rand()%10000;
+}
+void sort_arr(int arr[],int n,bool order)//if order is true, then ascending else desscending 
+{
+  int i=0,j=0;
+  for(i=0;i<n-1;i++)
     {
-      for(j=i+1;j<arr_size;j++)
+      for(j=0;j<n-i-1;j++)
 	{
-	  if(A[j]<A[j-1])
+	  if((order?arr[j]>arr[j+1]:arr[j]<arr[j+1]))
 	    {
-	      A[j]+=A[j-1];
-	      A[j-1]=A[j]-A[j-1];
-	      A[j]-=A[j-1];
+	      arr[j]=arr[j]+arr[j+1];
+	      arr[j+1]=arr[j]-arr[j+1];
+	      arr[j]=arr[j]-arr[j+1];
 	    }
+	  comp++;
 	}
     }
-  printf("\n");
-  for(i=0;i<arr_size;i++)
-    printf("%d\t",A[i]);
 }
-int r_bin_search(int A[],int l,int u)
+int rec_binsearch(int *arr,int n,int key,bool order,int low,int high)
 {
-  int m=(l+u)/2;
-  if(l<=u)
-    {
-      printf("%d\n",m);
-      if(A[m]==key)
-	return m;
-      else
-	{
-	  if(A[m]<key)
-	    r_bin_search(A,m+1,u);
-	  else
-	    r_bin_search(A,l,m-1);
-	}
-    }
-  else
-    return -1;
-    
+  if(low<=high)
+   {
+     comp++;
+     int mid=(low+high)/2;
+     if(arr[mid]<key)
+      {
+	if(order)
+	  return rec_binsearch(arr,n,key,order,mid+1,high);
+	return rec_binsearch(arr,n,key,order,low,mid-1);
+      }
+     else if(arr[mid]>key)
+      {
+	if(order)
+	  return rec_binsearch(arr,n,key,order,low,mid-1);
+	return rec_binsearch(arr,n,key,order,mid+1,high);
+      }
+     else
+       return mid+1;
+   }
+  return -1;
 }
-int r_lin_search(int A[],int i,int arr_size)
+int rec_linsearch(int *arr,int n,int key,int cur)
 {
-  if(i<(sizeof(A)/sizeof(A[0])))
+  if(cur<n)
     {
-      if(A[i]==key)
-	return i;
-      //return r_lin_search(A,i+1);
+      comp++;
+      if(arr[cur]==key)
+	return cur+1;
+      return rec_linsearch(arr,n,key,cur+1);
     }
-  else
-    return -1;
+  return -1;
 }
 int main()
 {
-  int n,i,choice,fpos;
-  printf("Enter the number of elements to be generated: ");
-  scanf("%d",&n);
-  int arr[n];
-  for(i=0;i<n;i++)
-    {  arr[i]=rand()%(n*100)-n%50;
-      printf("%d\t",arr[i]);
-    }
-  sort_arr(arr,n);
-  printf("Enter the key element: ");
-  scanf("%d",&key);
-  printf("\n1.Linear Search\n2.Binary Search\nYour Choice: ");
-  scanf("%d",&choice);
-  if(choice==1)
-    fpos=r_lin_search(arr,0,n);
-  else
-    {  fpos=r_bin_search(arr,0,n-1);
-      
-    }
-  printf("%d",fpos);
+  int n=0,i=0,ch=0,key=0,pos=0;
+  bool order=false;
+  char c;
+  while(true)
+  {
+    printf("\nSelect the desired option:-\n1.Binary Search\n2.Linear Search\n3.Exit\n");
+    scanf("%d",&ch);
+    if(ch==3) break;
+    printf("\nEnter the number of elements:");
+    scanf("%d",&n);
+    int* arr=malloc(sizeof(int)*n);
+    printf("Press \'y\' for user input and anything else for random input");
+    scanf("%*c%c",&c);
+    if(c=='y' || c=='Y')
+      {
+	printf("Enter the elements:-\n");
+	for(i=0;i<n;i++)
+	  scanf("%d",(arr+i));
+	scanf("%*c");
+      }
+    else
+	gen_rand_num(arr,n);
+    
+    printf("Press \'y\' sort the input in ascending order, \'Y\' to sort in descending order ");
+    if(ch!=1)
+    printf("and anything else to use an unsorted array ");
+    scanf("%c",&c);
+    order=c=='y'?true:false;
+    if(c=='y')
+      sort_arr(arr,n,true);
+    if(c=='Y')
+      sort_arr(arr,n,false);
+    printf("The array is:-\n");
+    for(i=0;i<n;i++)
+      printf("%d\t",*(arr+i));
+    printf("\nEnter the key element ");
+    scanf("%d",&key);
+    if(ch==1)
+      pos=rec_binsearch(arr,n,key,order,0,n-1);
+    else
+      pos=rec_linsearch(arr,n,key,0);
+    if(pos==-1)
+      printf("Element %d not found in the array.",key);
+    else
+      printf("Element %d found at position %d in the array.",key,pos);
+    printf("\nNumber of comparisions(with sorting included): %d",comp);
+    comp=0;
+  }
+  return 0;
 }
