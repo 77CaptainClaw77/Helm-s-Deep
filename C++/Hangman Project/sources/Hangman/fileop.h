@@ -8,6 +8,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 #include "../Hangman-CLI/score_sorter.h"
 #define WORDFILE "WordList.txt"
 using namespace std;

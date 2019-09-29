@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include <cstdlib>
 #include <cstdio>
 #define WRONG_GUESS 0
@@ -44,8 +45,11 @@ void draw(string word,string hint,int mistakes)
 int eval_game(string& word,char guess,int& mistakes,string& disp_word)
 {
     cout<<word<<"\t"<<guess;
+    if(word.length()==0)
+        return GAME_OVER_WIN;
     if(word.find(guess)==string::npos)
     {
+        cout<<"Wrong Guess";
         mistakes++;
         return WRONG_GUESS;
     }
@@ -55,7 +59,7 @@ int eval_game(string& word,char guess,int& mistakes,string& disp_word)
         {
             disp_word[word.find(guess)]=guess;
             if(word.length()!=1)
-                word.erase(word.find(guess),word.find(guess)+1);
+                word.erase(std::remove(word.begin(), word.end(), guess), word.end());
             else
             {
                 cout<<"Congragulations!! You guessed the right word!";
@@ -154,7 +158,8 @@ int main()
         {
             //cout<<word;
             draw_screen();
-            cout<<endl<<"Clue: "<<word_def;
+            cout<<endl<<"Clue: "<<word_def<<endl;
+            cout<<"Mistake Count: "<<mistakes<<endl;
             draw(word,word_def,mistakes);
             if(mistakes>=7)
             {
@@ -162,7 +167,10 @@ int main()
                 break;
             }
             cout<<endl<<"Enter your guess: ";
-            char guess=getchar();
+            fflush(stdin);
+            char guess=' ';
+            while(isspace(guess))
+                guess=getchar();
             stat=eval_game(word,guess,mistakes,word_guessed);
             if(stat==GAME_OVER_WIN)
             {

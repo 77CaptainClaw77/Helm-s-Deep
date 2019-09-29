@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1569774969 source:/home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman-CLI/main.cpp
+1569775941 source:/home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman-CLI/main.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
 	"../Hangman/fileop.h"
 	"../Hangman/user.h"
 
-1569774027 /home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman/fileop.h
+1569775319 /home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman/fileop.h
 	<string>
 	<utility>
 	<iostream>
@@ -14,6 +14,7 @@
 	<vector>
 	<cstdlib>
 	<ctime>
+	<algorithm>
 	"../Hangman-CLI/score_sorter.h"
 
 1569757558 /home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman-CLI/score_sorter.h
