@@ -42,7 +42,7 @@ void draw(string word,string hint,int mistakes)
     cout<<" |________________"<<endl;
     cout<<"You Lost"<<endl;
 }
-int eval_game(string& word,char guess,int& mistakes,string& disp_word)
+int eval_game(string orig_word,string& word,char guess,int& mistakes,string& disp_word)
 {
     cout<<word<<"\t"<<guess<<"\t"<<word.length();
     if(word.find(guess)==string::npos)
@@ -55,7 +55,11 @@ int eval_game(string& word,char guess,int& mistakes,string& disp_word)
     {
         if(word.find(guess)!=string::npos)
         {
-            disp_word[word.find(guess)]=guess;
+            for(int i=0;i<orig_word.length();i++)
+            {
+                if(orig_word[i]==guess)
+                    disp_word[i]=guess;
+            }
             word.erase(std::remove(word.begin(), word.end(), guess), word.end());
             if(isspace(word[0]))
             {
@@ -149,12 +153,14 @@ int main()
         string word=word_data.first;
         string word_def=word_data.second;
         string word_guessed="";
+        string orig_word=word;
         int mistakes=0;
-        for(char ch:word) word_guessed+="_";
+        for(int m=0;m<word.length()-1;m++) word_guessed+="_";
         while(1)
         {
             //cout<<word;
             draw_screen();
+            cout<<endl<<"Current Status"<<word_guessed;
             cout<<endl<<"Clue: "<<word_def<<endl;
             cout<<"Mistake Count: "<<mistakes<<endl;
             draw(word,word_def,mistakes);
@@ -168,7 +174,7 @@ int main()
             char guess=' ';
             while(isspace(guess))
                 guess=getchar();
-            stat=eval_game(word,guess,mistakes,word_guessed);
+            stat=eval_game(orig_word,word,guess,mistakes,word_guessed);
             if(stat==GAME_OVER_WIN)
             {
                 break;

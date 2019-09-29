@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1569775941 source:/home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman-CLI/main.cpp
+1569778102 source:/home/kumarguru/Documents/Programs/C++/Hangman Project/sources/Hangman-CLI/main.cpp
 	<iostream>
+	<cctype>
 	<cstdlib>
 	<cstdio>
 	"../Hangman/fileop.h"
