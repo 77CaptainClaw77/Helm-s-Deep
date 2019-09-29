@@ -1,0 +1,14 @@
+#include <string>
+#include <iostream>
+using namespace std;
+string get_binary_dump()
+{
+  
+}
+int main()
+{
+  string a="Hey";
+  string b="Toy";
+  cout<<('a'^'a')x4;
+a  return 0;
+}

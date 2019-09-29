@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+int main()
+{
+  pid_t pid;
+  pid=fork();
+  if(pid==0)
+    {
+      printf("\nNow im in the child process which is executed successfully!");
+      execlp("/bin/cd","cd","..",NULL);
+    }
+  else if(pid<0)
+    {
+      fprintf(stderr,"\nChild Process Creation Failed :(");
+      exit(-1);
+    }
+  else
+    {
+      printf("In the parent, the child process id is %lu",pid);
+      wait(NULL);
+      exit(0);
+    }
+  return 0;
+}

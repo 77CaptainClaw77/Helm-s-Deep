@@ -1,0 +1,40 @@
+class Example
+{
+    static
+    {
+	System.out.print("depends on ");
+	str="a red ";
+    }
+    static String str;
+    static String getStaticMessage()
+    {
+	return "wheelbarrow ";
+    }
+    static class StaticNested
+    {
+	static
+	{
+	    System.out.print("glazed with ");
+	}
+	String getInnerMessage()
+	{
+	    return "rainwater beside ";
+	}
+    }
+}
+class ExecStatic
+{
+    static
+    {
+	System.out.print("So much");
+    }
+    static String getFinalMessage(){
+	return "\n\t\t-Mr. Robot";
+    }
+    public static void main(String args[])
+    {
+	static String str="the white chickens ";
+	System.out.println(Example.getStaticMessage()+Example.str+Example.StaticNested.getInnerMessage()+str+getFinalMessage());
+    }
+    
+}

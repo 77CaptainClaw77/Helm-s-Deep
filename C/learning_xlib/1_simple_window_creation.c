@@ -11,8 +11,8 @@ int main()
   disp=XOpenDisplay(NULL);
   if(disp==NULL)
     {
-      fprintf(stderr,"Display Not Found Error\n");
       exit(ERR_DISPLAY_NOT_FOUND);
+      fprintf(stderr,"Display Not Found Error\n");
     }
   screen=DefaultScreen(disp);
   win=XCreateSimpleWindow(disp,RootWindow(disp,screen),350,400,200,200,1,WhitePixel(disp,screen),BlackPixel(disp,screen));
