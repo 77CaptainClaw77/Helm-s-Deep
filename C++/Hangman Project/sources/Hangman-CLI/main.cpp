@@ -44,9 +44,7 @@ void draw(string word,string hint,int mistakes)
 }
 int eval_game(string& word,char guess,int& mistakes,string& disp_word)
 {
-    cout<<word<<"\t"<<guess;
-    if(word.length()==0)
-        return GAME_OVER_WIN;
+    cout<<word<<"\t"<<guess<<"\t"<<word.length();
     if(word.find(guess)==string::npos)
     {
         cout<<"Wrong Guess";
@@ -58,9 +56,8 @@ int eval_game(string& word,char guess,int& mistakes,string& disp_word)
         if(word.find(guess)!=string::npos)
         {
             disp_word[word.find(guess)]=guess;
-            if(word.length()!=1)
-                word.erase(std::remove(word.begin(), word.end(), guess), word.end());
-            else
+            word.erase(std::remove(word.begin(), word.end(), guess), word.end());
+            if(isspace(word[0]))
             {
                 cout<<"Congragulations!! You guessed the right word!";
                 return GAME_OVER_WIN;

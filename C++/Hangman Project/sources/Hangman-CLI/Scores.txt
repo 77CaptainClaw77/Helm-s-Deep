@@ -9,3 +9,4 @@ eregor 0
 wep 0
 yum 0
 er 0
+peregrin 0
