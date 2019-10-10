@@ -16,7 +16,7 @@ class score_sorter
         int i=l-1;
         for (int j=l;j<=h-1;j++)
     {
-        if (score_set[j].second<piv.second)
+        if (score_set[j].second>piv.second)
         {
             i++;
             swap(score_set[i],score_set[j]);

@@ -4,11 +4,14 @@
 #include <string>
 #include <utility>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
+#include <chrono>
+using namespace std::chrono; 
 #include "../Hangman-CLI/score_sorter.h"
 #define WORDFILE "WordList.txt"
 using namespace std;
@@ -91,32 +94,54 @@ public: vector<string> read_data(char* filename)
             f_r>>score;
             h_scores.push_back(pair<string,int>(u_name,score));
         }
+        auto start=high_resolution_clock::now();
         score_sorter so;
         so.quick_sort(h_scores,0,h_scores.size()-1);
+        auto end=high_resolution_clock::now();      
+        cout<<endl<<"\t\t\tHigh Scores\n";
+        cout<<endl<<"\t\tUsername\tScore"<<endl;
         for(size_t i=0;i<h_scores.size();i++)
         {
             if(i==5)
                 break;
-            cout<<endl<<"High Scores";
-            cout<<endl<<h_scores[i].first<<"\t"<<h_scores[i].second<<endl;
+            cout<<endl<<"\t\t"<<setw(10)<<left<<h_scores[i].first<<"\t"<<h_scores[i].second<<endl;
         }
+        auto duration = duration_cast<microseconds>(end - start); 
+        cout<<endl<<"\t\tOperation Performed: Sorting";
+        cout<<endl<<"\t\tAlgorithm Used : Quick Sort";
+        cout<<endl<<"\t\tNo. of objects sorted: "<<h_scores.size();
+        cout<<endl<<"\t\tTime Taken For Sort: "<<duration.count()<<" microseconds";
+        start=high_resolution_clock::now();
+        //score_sorter so;
+        reverse(h_scores.begin(), h_scores.end());
+        so.quick_sort(h_scores,0,h_scores.size()-1);
+        end=high_resolution_clock::now();
+        duration = duration_cast<microseconds>(end - start);
+        cout<<endl<<"\t\tTime Taken in the Worst Case: "<<duration.count()<<" microseconds";
         f_r.close();
     }
-    pair<string,string> get_user(string username)
+    pair<string,string> get_user(string username,string e_pass)
     {
         string u,p;
         fstream f_r;
         f_r.open("Users.txt",ios::in);
-        while(!f_r.eof())
-        {
         getline(f_r,u);
-        if(username==u) break;
-        getline(f_r,p);
+        while(1)
+        {
+            while(!f_r.eof())
+            {
+            getline(f_r,u);
+            if(username==u) break;
+            getline(f_r,u);
+            }
+            getline(f_r,p);
+            if(e_pass==p)
+                    return pair<string,string>(u,p);
+            if(f_r.eof())
+                break;
         }
-        if(f_r.eof())
-            return pair<string,string>("","!");
-        getline(f_r,p);
-            return pair<string,string>(u,p);
+        return pair<string,string>("","!");
+        //getline(f_r,p);
     }
     void add_user(string username,string password) //Create new user use encryption here
     {

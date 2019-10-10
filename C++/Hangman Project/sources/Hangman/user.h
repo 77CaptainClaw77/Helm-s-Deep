@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <cstring>
+#include <ctime>
 #include <cstdlib>
 using namespace std;
 class user
@@ -18,8 +20,9 @@ public:
         user_name=uname;
         password=pass;
     }
-string b64encrypt(string pass) //Use base64 to encrypt here
+static string b64encrypt(string pass) //Use base64 to encrypt here
   {
+    clock_t start_time=clock();
     char allowed_char_set[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     char* encrypted=(char*)malloc(sizeof(char)*100);
     int pass_len=pass.length();//Holds the length of the original string
@@ -61,6 +64,14 @@ string b64encrypt(string pass) //Use base64 to encrypt here
     encrypted[k]='\0';
     //cout<<encrypted;
     //cout<<endl;
+    clock_t end_time=clock();
+    double time_taken=(double)(end_time-start_time)/CLOCKS_PER_SEC;
+    cout<<endl<<"\t\tOperation Performed: Password Encryption";
+    cout<<endl<<"\t\tAlgorithm Used : Base64 Encryption";
+    cout<<endl<<"\t\tLength Of Plain Text Password : "<<pass_len<<" characters";
+    cout<<endl<<"\t\tSize of Encrypted Password: "<<k;
+    cout<<endl<<"\t\tTime Taken For Encryption: "<<time_taken<<" seconds";
+
     return string(encrypted);
   }
   bool verify_password(string pass) //Function to verify user password by decrypting and checking password

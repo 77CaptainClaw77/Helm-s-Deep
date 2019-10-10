@@ -1,9 +1,0 @@
-class Delay
-{
-    public static void main(String args[])
-    {
-	System.out.println("Sleep now!");
-	Sleep(1000);
-	System.out.println("Wokeup now");
-    }
-}
