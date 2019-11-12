@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+int subset_count;
+void printallsubsets(int* arr,int cur_sum,int desired_sum,int* included,int n,int index){
+  int i;
+  if(cur_sum>desired_sum || index==n)
+    return;
+  else if(cur_sum==desired_sum){
+    subset_count++;
+    printf("\nSubset %d: ",subset_count);
+    for(i=0;i<n;i++)
+      if(included[i])
+	printf("%s\t",arr[i]);
+  } 
+  else{
+    included[index]=1;
+    printallsubsets(arr,cur_sum+arr[i],desired_sum,included,n,index+1);
+    included[index]=0;
+    printallsubsets(arr,cur_sum,desired_sum,included,index+1);
+  }
+}
+int main(int argc, char *argv[]){
+  int n,i,sum;
+  printf("Enter the number of elements: ");
+  scanf("%d", &n);
+  int* arr=malloc(sizeof(int)*n);
+  printf("Enter the elements:-\n");
+  for (i = 0; i < n; i++)   
+    scanf("%d",&arr[i]);
+  printf("Enter the desired sum:-");
+  scanf("%d",sum);
+  int* included=calloc(n,sizeof(int));
+  printallsubsets(arr,0,sum,included,n,0);
+  return 0;
+}

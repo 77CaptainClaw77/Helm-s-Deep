@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct
+{
+  int v1,v2;
+}edge;
+typedef struct
+{
+  egde *e;
+}graph;
+int main()
+{
+  printf("To terminate type end.Enter the edges as\nedge_no\tsource\tdestination\n");
+  graph g;
+  g.e=malloc(sizeof(edge)*100);
+  return 0;
+}
+
+
+
+

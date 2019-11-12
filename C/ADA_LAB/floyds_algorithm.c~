@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[])
+{
+  int** G;
+  int n,i,j;
+  printf("Enter the number of vertices: ");
+  scanf("%d", &n);
+  G=malloc(sizeof(int*)*n);
+  for (i = 0; i < n; i++) 
+    G[i]=malloc(sizeof(int)*n);
+  printf("Enter the adjacency matrix of the graph(Enter -1 for infinity):-\n");
+  for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+      scanf("%d",&G[i][j]);
+  
+  return 0;
+}

@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+void swap(int* a,int* b){
+  int temp=*a;
+  *a=*b;
+  *b=temp;
+}
+int asc_comparator(const void* a,const void* b){
+  return (*(const int*)a)>(*(const int*)b);
+}
+int desc_comparator(const void* a,const void* b){
+  return (*(const int*)a)<(*(const int*)b);
+}
+int partition(int* arr,int l,int r){
+  int x=arr[r];
+  int i=l-1;
+  int j;
+  for(j=l;j<r;j++){
+    if(arr[j]<=x){
+      i++;
+      swap(arr[j],arr[i]);
+    }
+  }
+  swap(arr[i+1],arr[r]);
+  return i+1;
+}
+void qsort(int* arr,int l,int r){
+  int q=partition(arr,l,r);
+  if(l<r){
+    qsort(arr,l,q-1);
+    qsort(arr,q+1,r);
+  }
+}
+int main(int argc, char *argv[]){
+  int* arr;
+  int n,i;
+  char ch;
+  printf("Enter the number of elements: ");
+  scanf("%d", &n);
+  arr=malloc(sizeof(int)*n);
+  printf("Enter \'y\' to generate random elements and anything else to input: ");
+  scanf("%c",&ch);
+  if (ch=='y') {
+    printf("Press \'y\' for ascending, \'n\' for descending order and anything else for random order\n");
+    scanf("%d", &ch);
+    srand(time(NULL));
+    for (i = 0; i < n; ++i)    
+      arr[i]=rand()%100000;
+    if(ch=='y'){
+      qsort(arr,n,sizeof(int),asc_comparator)
+    }
+    else if(ch=='n'){
+      
+    }
+    else{
+
+    }
+  }
+  else {
+    printf("Enter the elements: ");
+    for(i=0;i<n;i++)
+      scanf("%d", &arr[i]);
+  }
+  return 0;
+}
