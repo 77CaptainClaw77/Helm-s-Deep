@@ -1,0 +1,15 @@
+Enter the time quantum:4
+
+Order Of Execution Of Processes:-
+Process p1 at time 0
+Process p2 at time 4
+Process p3 at time 7
+Process p1 at time 10
+Process p1 at time 14
+Process p1 at time 18
+Process p1 at time 22
+Process p1 at time 26
+Total Waiting Time: 17
+Total Turnaround Time: 47
+Average Waiting Time: 5.667000
+Total Turnaround Time: 15.666667

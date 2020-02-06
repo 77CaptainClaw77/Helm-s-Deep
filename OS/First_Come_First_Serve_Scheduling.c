@@ -36,7 +36,7 @@ int main(int argc,char* argv[])
 	}
       while(fscanf(process_reader,"%s %d %ld",temp,&temp_val_a,&temp_val_b)!=EOF)
 	{
-	  printf("%s %d %ld",temp,temp_val_a,temp_val_b);
+	  // printf("%s %d %ld",temp,temp_val_a,temp_val_b);
 	  if(process_count==process_queue_size-1)
 	    {
 	      process_queue=realloc(process_queue,process_queue_size*2*(sizeof(process_control_block)));
@@ -93,19 +93,27 @@ int main(int argc,char* argv[])
 	printf("\nOrder Of Execution Of Processes:-");
 	for(i=0;i<process_count;i++)
 	{
-	  waiting_time+=cur_time-process_queue[i].arrival_time;
-	  while(cur_time<process_queue[i].arrival_time)
+	  //	  waiting_time+=cur_time-process_queue[i].arrival_time;
+	  if(cur_time<process_queue[i].arrival_time)
 	    {
-	      cur_time++;
+	      while(cur_time<process_queue[i].arrival_time)
+		{
+		  cur_time++;
+		  // waiting_time++;
+		}
 	    }
-	  if(i!=0)
-	    turnaround_time+=cur_time-process_queue[i-1].arrival_time;
-	  printf("%s\t",process_queue[i].process_name);
+	  waiting_time+=cur_time-process_queue[i].arrival_time;
+	  /*if(i!=0)
+	    turnaround_time+=cur_time-process_queue[i-1].arrival_time;*/
+	  printf("\n%s at time %ld",process_queue[i].process_name,cur_time);
 	  cur_time+=process_queue[i].burst_time; 
 	}
-	turnaround_time+=cur_time-process_queue[i-1].arrival_time;
+	turnaround_time=waiting_time;
+	for(i=0;i<process_count;i++)
+	  turnaround_time+=process_queue[i].burst_time;
 	printf("\nTotal Waiting Time: %ld",waiting_time);
 	printf("\nTotal Turnaround Time: %ld",turnaround_time);
 	printf("\nAverage Waiting Time: %lf",(waiting_time/(process_count+0.0)));
 	printf("\nTotal Turnaround Time: %lf",(turnaround_time/(process_count+0.0)));
+	return 0;
 }

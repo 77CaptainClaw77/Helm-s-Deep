@@ -109,6 +109,7 @@ public: vector<string> read_data(char* filename)
         auto duration = duration_cast<microseconds>(end - start); 
         cout<<endl<<"\t\tOperation Performed: Sorting";
         cout<<endl<<"\t\tAlgorithm Used : Quick Sort";
+        cout<<endl<<"\t\tAlgorithm Efficiency : O(nlog(n))";
         cout<<endl<<"\t\tNo. of objects sorted: "<<h_scores.size();
         cout<<endl<<"\t\tTime Taken For Sort: "<<duration.count()<<" microseconds";
         start=high_resolution_clock::now();

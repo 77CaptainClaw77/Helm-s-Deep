@@ -9,7 +9,8 @@ typedef struct
   char* process_name;
   long burst_time;
   int arrival_time;
-  long prempt_time;
+  int entry_time;
+  int burst_completed;
 }process_control_block;
 
 int main(int argc,char* argv[])
@@ -47,15 +48,15 @@ int main(int argc,char* argv[])
 		process_queue[process_count].process_name=malloc((strlen(temp)+1)*sizeof(char));
 		process_queue[process_count].arrival_time=temp_val_a;
 		process_queue[process_count].burst_time=temp_val_b;
-		process_queue[process_count].prempt_time=0;
+		process_queue[process_count].burst_completed=0;
+		process_queue[process_count].entry_time=0;
 		strcpy(process_queue[process_count].process_name,temp);
 		process_count++;
 	}
       int i=0;
       fclose(process_reader);
     }
-  }
-else
+ else
     {
 		printf("Enter the number of processes: ");
 		scanf("%d",&process_queue_size);
@@ -75,65 +76,73 @@ else
 			printf("Enter the burst time of the process: ");
 			scanf("%ld",&(process_queue[i].burst_time));
 			process_count++;
-			process_queue[i].prempt_time=0;
+			process_queue[i].burst_completed=0;
+			process_queue[i].entry_time=0;
 			printf("\n\n");
 		}
 	}
 
-  printf("Enter the time quantum:");
-  scanf("%d",&time_quantum);
-	long waiting_time=0,turnaround_time=0,cur_time=0;
-	int i,j;
-	//Building FIFO Queue same as sorted array.
-	for(i=1;i<process_count;i++)
-	{
-	  for(j=0;j<process_count-i;j++)
-	    {
-	      if(process_queue[j].arrival_time>process_queue[j+1].arrival_time)
-		{
-		  process_control_block temp_block;
-		  temp_block=process_queue[j];
-		  process_queue[j]=process_queue[j+1];
-		  process_queue[j+1]=temp_block;
-		}
-	    }
-	}
-	printf("\nOrder Of Execution Of Processes:-");
-	while(1)
+printf("Enter the time quantum:");
+scanf("%d",&time_quantum);
+long waiting_time=0,turnaround_time=0,cur_time=0;
+int i,j;
+//Building FIFO Queue same as sorted array.
+for(i=1;i<process_count;i++)
+  {
+    for(j=0;j<process_count-i;j++)
+      {
+	if(process_queue[j].arrival_time>process_queue[j+1].arrival_time)
 	  {
-	    int no_proc_exec=1;
-	    int complete_count=0;
-	    for(i=0;i<process_count;i++)
-	      {
-		if(process_queue[i].arrival_time>cur_time && process_queue[i].burst_time>0)
-		  continue;
-		else
-		  no_proc_exec=1;
-		if(process_queue[i].burst_time==0)
-		  complete_count++;
-		if(process_queue[i].burst_time>time_quantum)
-		  {
-		    process_queue[i].burst_time-=time_quantum;
-		    cur_time+=time_quantum;
-		    //process_queue[i].prempt_time=cur_time;
-		  }
-		else
-		  {
-		    cur_time+=process_queue[i].burst_time;
-		    process_queue[i].burst_time=0;
-		  }
-		if(process_queue[i].prempt_time==0)
-		  waiting_time+=cur_time-process_queue[i].arrival_time;
-		else
-		  waiting_time+=cur_time-process_time[i].prempt_time;
-	      }
-	    if(no_proc_exec)
-	      cur_time++;
-	    if(complete_count==process_count)
-	      break;
+	    process_control_block temp_block;
+	    temp_block=process_queue[j];
+	    process_queue[j]=process_queue[j+1];
+	    process_queue[j+1]=temp_block;
 	  }
-	turnaround_time+=cur_time-process_queue[i-1].arrival_time;
-	printf("\nTotal Waiting Time: %ld",waiting_time);
+      }
+  }
+	printf("\nOrder Of Execution Of Processes:-");
+while(1)
+  {
+    int proc_exec_count=0;
+	int proc_complete_count=0;
+    for(i=0;i<process_count;i++)
+      {
+	if(cur_time<process_queue[i].arrival_time)
+	{
+	  continue;
+	}
+	if(process_queue[i].burst_completed==process_queue[i].burst_time)
+	 {
+		 proc_complete_count++; 
+		 continue;
+	 }
+	if(process_queue[i].burst_time-process_queue[i].burst_completed<=time_quantum)
+	  {
+	    waiting_time+=cur_time-process_queue[i].entry_time-process_queue[i].burst_completed-process_queue[i].arrival_time;
+	    cur_time+=process_queue[i].burst_time-process_queue[i].burst_completed;
+	    process_queue[i].burst_completed=process_queue[i].burst_time;
+	    proc_exec_count++;
+		printf("Process %s at time %ld",process_queue[i].process_name,cur_time);
+	  }
+	else
+	  {
+	    if(process_queue[i].burst_completed==0)
+	      process_queue[i].entry_time=cur_time;
+	    process_queue[i].burst_completed+=time_quantum;
+	    cur_time+=time_quantum;
+	    proc_exec_count++;
+	  }
+      }
+	printf("%d",proc_exec_count);
+    if(proc_exec_count==0)
+      cur_time++;
+    if(proc_complete_count==process_count)
+      break;
+  }
+turnaround_time=waiting_time;
+for(i=0;i<process_count;i++)
+	  turnaround_time+=process_queue[i].burst_time;
+printf("\nTotal Waiting Time: %ld",waiting_time);
 	printf("\nTotal Turnaround Time: %ld",turnaround_time);
 	printf("\nAverage Waiting Time: %lf",(waiting_time/(process_count+0.0)));
 	printf("\nTotal Turnaround Time: %lf",(turnaround_time/(process_count+0.0)));

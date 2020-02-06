@@ -68,6 +68,7 @@ static string b64encrypt(string pass) //Use base64 to encrypt here
     double time_taken=(double)(end_time-start_time)/CLOCKS_PER_SEC;
     cout<<endl<<"\t\tOperation Performed: Password Encryption";
     cout<<endl<<"\t\tAlgorithm Used : Base64 Encryption";
+    cout<<endl<<"\t\tAlgorithm Efficiency : O(n)";
     cout<<endl<<"\t\tLength Of Plain Text Password : "<<pass_len<<" characters";
     cout<<endl<<"\t\tSize of Encrypted Password: "<<k;
     cout<<endl<<"\t\tTime Taken For Encryption: "<<time_taken<<" seconds";
