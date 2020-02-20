@@ -1,0 +1,14 @@
+#include <iostream>
+class delim_fields_records{
+ private:static char record_delimiter='#';
+  static char field_delimiter='|';
+  static char padding='*';
+  char* buffer;
+  int record_size;
+  int pos;
+ public:
+  void pack(char* str);
+  void unpack(char* str);
+  void clear();
+  
+};
