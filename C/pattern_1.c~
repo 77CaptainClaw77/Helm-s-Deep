@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main(){
+  int n;
+  int i,j,c,val;
+  scanf("%d",&n);
+  c=0;
+  val=n;
+  for(i=0;i<2*n;i++){
+    for(j=0;j<c;j++){
+      printf("%d ",val);
+      val++;
+    }
+    for(j=0;j<((n-c)*2)-1;j++){
+      printf("%d ",val);
+    }
+    for(j=0;j<c;j++){
+      printf("%d ",val);
+      val--;
+    }
+  }
+  return 0;
+}
