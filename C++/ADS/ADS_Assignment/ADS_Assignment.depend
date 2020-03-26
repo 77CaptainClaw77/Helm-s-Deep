@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1585067395 source:f:\programs\ads_assignment\binary_search_tree.cpp
+	<iostream>
+	<vector>
+
+1585223852 source:f:\programs\helm-s-deep\c++\ads\ads_assignment\binary_search_tree.cpp
+	<iostream>
+	<vector>
+
