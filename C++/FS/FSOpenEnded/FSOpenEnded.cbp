@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="ADS_Assignment" />
+		<Option title="FSOpenEnded" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/ADS_Assignment" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/FSOpenEnded" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/ADS_Assignment" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/FSOpenEnded" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,17 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="binary_search_tree.cpp">
-			<Option compile="0" />
-			<Option link="0" />
+		<Unit filename="User.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="leftist_heap.cpp" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

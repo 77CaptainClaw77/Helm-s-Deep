@@ -1,0 +1,5 @@
+1si17is019|Rishikesh|ISE|6|#
+1si17ec001|adithya|ece|6|#
+1si15is065|Yashwanth|ise|8|#
+1si16ee002|raahul|eee|4|#
+1si18is009|chandra|ise|2|#

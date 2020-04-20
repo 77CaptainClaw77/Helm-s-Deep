@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <cmath>
+#include <cctype>
+using namespace std;
+string decode_instruction(string ins){
+  int mul=1;
+  stack<int> multipliers;
+  staack<string> instructions;
+  string temp="";
+  for(int i=0;i<ins.size();i++){
+    if(isdigit(ins[i]))
+      multipliers.push(ins[i]-'0');
+    else if(ins[i]=='('){
+      instructions.push(temp);
+      temp="";
+    }
+    else if(ins[i]==')'){
+      int m=multipliers.top();
+      string new_ins=instructions.top();
+      for(int j=0;j<multipliers;j++)
+	new_ins=new_ins+new_ins;
+      multipliers.pop();
+      instructions.pop();
+      if(instructions.empty())
+	temp=temp+new_ins;
+      else
+	instructions.top()=instructions.top()+new_ins;
+    }
+    else{
+      temp=temp+ins[i];
+    }
+  }
+  return temp;
+}
+int main(int argc, char *argv[])
+{
+  int T;
+  cin>>T;
+  for(int i=0;i<T;i++){
+    
+  }
+  return 0;
+}

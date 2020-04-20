@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1586024912 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset1.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<algorithm>
+	<cstring>
+
+1586027163 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset2.cpp
+	<iostream>
+	<string>
+	<cstring>
+	<cstdlib>
+	<fstream>
+
+1586028842 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset3.cpp
+	<iostream>
+	<string>
+	<cstring>
+	<cstdlib>
+	<fstream>
+
+1586032166 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset4.cpp
+	<iostream>
+	<string>
+	<cstring>
+	<fstream>
+	<cstdlib>
+
+1586033087 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset5.cpp
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<fstream>
+
+1586035379 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset6.cpp
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<fstream>
+
+1586036589 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset7.cpp
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<fstream>
+	<string.h>
+
+1586040025 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset8.cpp
+	<iostream>
+	<cstring>
+	<fstream>
+	<string>
+
+1586041761 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset9.cpp
+	<string>
+	<cstring>
+	<fstream>
+	<iomanip>
+	<iostream>
+
+1586042996 source:/home/kumarguru/Documents/Programs/C++/FS/FS_Final/FinalFS/labset10.cpp
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<iostream>
+	<fstream>
+
