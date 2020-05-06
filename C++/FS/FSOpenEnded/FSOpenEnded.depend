@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1587735810 source:/home/kumarguru/Documents/Programs/C++/FS/FSOpenEnded/main.cpp
+	<iostream>
+	"User.h"
+	<vector>
+	<iostream>
+	<cstdlib>
+	<limits>
+	<ios>
+
+1587731617 /home/kumarguru/Documents/Programs/C++/FS/FSOpenEnded/User.h
+	<string>
+	<fstream>
+	<vector>
+	<map>
+	<utility>
+	<iostream>
+	<iterator>
+	"fileop.h"
+
+1587630754 /home/kumarguru/Documents/Programs/C++/FS/FSOpenEnded/fileop.h
+	<iostream>
+	<fstream>
+	<vector>
+	<map>
+	<string>
+
