@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int N;
+        cin>>N;
+        if(N==0)
+            cout<<"0\n";
+        else{
+            int n=1;
+            int sum_n=0;
+            while(sum_n<N){
+                sum_n=(n*(n+1))/2;
+                n++;
+            }
+            cout<<n-1<<"\n";
+        }
+    }
+}

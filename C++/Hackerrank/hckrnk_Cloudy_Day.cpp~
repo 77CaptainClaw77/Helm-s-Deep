@@ -1,0 +1,108 @@
+//// TODO: INCOMPLETE, Solution is wrong!
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
+typedef long long ll;
+using namespace std;
+struct Town{
+  ll population;
+  ll x;
+};
+struct Cloud{
+  ll x;
+  ll range;
+};
+void quicksort_towns(Town towns[],int l,int h){
+  if(l<h){
+    ll pivot=towns[h].x;
+    int i=l-1;
+    for(int j=l;j<h;j++){
+      if(towns[j].x>pivot){
+	i++;
+	swap(towns[j],towns[i]);
+      }
+    }
+    swap(towns[i+1],towns[h]);
+    int p=i+1;
+    quicksort_towns(towns,l,p-1);
+    quicksort_towns(towns,p+1,h);
+  }
+}
+int find_first_town(Town towns[],int n,int k){ //smallest greater than key
+  int l=0,h=n-1;
+  while(l<h){
+    int m=l+(h-l)/2;
+    if(towns[m].x>=k)
+      h=m;
+    else
+      l=m+1;
+  }
+  return h;
+}
+int find_last_town(Town towns[],int n,int k){//largest smaller than key
+  int l=0,h=n-1;
+  while(l<h){
+    int m=l+(h-l+1)/2;
+    if(towns[m].x<=k)
+      l=m;
+    else
+      h=m-1;
+  }
+  return l;
+}
+int main(int argc, char *argv[])
+{
+  cin.tie(0);
+  ios::sync_with_stdio(0);
+  int n,m;
+  cin>>n;
+  //Input begins here
+  Town towns[n];
+  for(int i=0;i<n;i++)
+    cin>>towns[i].population; 
+  for(int i=0;i<n;i++)
+    cin>>towns[i].x;
+  cin>>m;
+  Cloud clouds[m];
+  for(int i=0;i<m;i++)
+    cin>>clouds[i].x;
+  for(int i=0;i<m;i++)
+    cin>>clouds[i].range;
+  //Input ends here
+  quicksort_towns(towns,0,n-1);
+  int town_counts[n]={};
+  int end_points[m];
+  for(int i=0;i<m;i++){
+    int l=find_first_town(towns,n,clouds[i].x-clouds[i].range);
+    int r=find_first_town(towns,n,clouds[i].x+clouds[i].range);
+    if(l<0 || r>n-1)
+      continue;
+    town_counts[l]++;
+    if(r<n-1)
+      town_counts[r+1]--;
+  }
+  ll sunny_town_pops=0;
+  int cur=0;
+  for(int i=1;i<n;i++)
+    town_counts[i]+=town_counts[i-1];
+  for(int i=0;i<n;i++)
+    if(town_counts[i]==0)
+      sunny_town_pops+=towns[i].population;
+  ll pop=0,max_pop=0;
+  for(int i=0;i<m;i++){
+    int l=find_first_town(towns,n,clouds[i].x-clouds[i].range);
+    int r=find_first_town(towns,n,clouds[i].x+clouds[i].range);
+    if(l<0 || r>n-1)
+      continue;
+    for(int j=l;j<=r;j++){
+      if(town_counts[j]==1)
+	pop+=towns[j].population;
+    }
+    if(pop>max_pop)
+      max_pop=pop;
+    pop=0;
+  }
+  cout<<max_pop+sunny_town_pops;
+  return 0;
+}

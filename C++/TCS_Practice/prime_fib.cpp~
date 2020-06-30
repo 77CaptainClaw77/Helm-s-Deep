@@ -1,0 +1,24 @@
+#include <iostream>
+#include <set>
+using namespace std;
+set<int> precompute_primes(){
+  set<int> primes;
+  vector<bool> is_prime_val(10001,true);
+  for(int i=2;i<=10000;i++){
+    if(is_prime_val[i] && i*i<=10000){
+      for(int j=i*i;j<=10000;j+=i)
+	is_prime_val[j]=false;
+    }
+  }
+  for(int i=2;i<=10000;i++){
+    if(is_prime_val[i])
+      primes.insert(i);
+  }
+  return primes;
+}
+int main(int argc, char *argv[])
+{
+  set<int> prime_vals=precompute_primes();
+  
+  return 0;
+}

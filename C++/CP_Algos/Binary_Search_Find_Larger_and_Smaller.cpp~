@@ -1,0 +1,14 @@
+#include <iostream>
+template<class T>
+int find_upper_closest(T arr[],int n,T ele){ //find smallest element greater than or equal to current element
+  int l=0,h=n-1;
+}
+template<class T>
+int find_lower_closest(T arr[],int n,T ele){ //find largest element smaller than or equal to current element
+  int l=0,h=n-1;
+}
+int main(int argc, char *argv[])
+{
+  
+  return 0;
+}
