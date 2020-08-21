@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1594829754 source:/home/kumarguru/Documents/Programs/C/FacePrep_Practice/fprep/linked_list.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+
+1594980286 source:/home/kumarguru/Documents/Programs/C/FacePrep_Practice/fprep/stack.c
+	<stdio.h>
+	<stdlib.h>
+
+1594998288 source:/home/kumarguru/Documents/Programs/C/FacePrep_Practice/fprep/bracket_matching.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
