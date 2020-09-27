@@ -1,9 +1,0 @@
-#include <stdio.h>
-#include <bool.h>
-int main(int argc,char* argv[]){
-  int T,n,k;
-  scanf("%d",&T);
-  char* coins;
-  
-    
-}
