@@ -1,0 +1,32 @@
+RGB_Queries.cpp: In function ‘int main(int, char**)’:
+RGB_Queries.cpp:74:61: error: no matching function for call to ‘std::map<int, std::vector<int> >::find()’
+   74 |       if(R.find(r)!=R.end() && G.find(g)!=G.end() && B.find()!=B.end()){
+      |                                                             ^
+In file included from /usr/include/c++/9/map:61,
+                 from /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h:81,
+                 from RGB_Queries.cpp:1:
+/usr/include/c++/9/bits/stl_map.h:1168:7: note: candidate: ‘std::map<_Key, _Tp, _Compare, _Alloc>::iterator std::map<_Key, _Tp, _Compare, _Alloc>::find(const key_type&) [with _Key = int; _Tp = std::vector<int>; _Compare = std::less<int>; _Alloc = std::allocator<std::pair<const int, std::vector<int> > >; std::map<_Key, _Tp, _Compare, _Alloc>::iterator = std::_Rb_tree_iterator<std::pair<const int, std::vector<int> > >; std::map<_Key, _Tp, _Compare, _Alloc>::key_type = int]’
+ 1168 |       find(const key_type& __x)
+      |       ^~~~
+/usr/include/c++/9/bits/stl_map.h:1168:7: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/9/bits/stl_map.h:1174:2: note: candidate: ‘template<class _Kt> decltype (((std::map<_Key, _Tp, _Compare, _Alloc>*)this)->std::map<_Key, _Tp, _Compare, _Alloc>::_M_t._M_find_tr(__x)) std::map<_Key, _Tp, _Compare, _Alloc>::find(const _Kt&) [with _Kt = _Kt; _Key = int; _Tp = std::vector<int>; _Compare = std::less<int>; _Alloc = std::allocator<std::pair<const int, std::vector<int> > >]’
+ 1174 |  find(const _Kt& __x) -> decltype(_M_t._M_find_tr(__x))
+      |  ^~~~
+/usr/include/c++/9/bits/stl_map.h:1174:2: note:   template argument deduction/substitution failed:
+RGB_Queries.cpp:74:61: note:   candidate expects 1 argument, 0 provided
+   74 |       if(R.find(r)!=R.end() && G.find(g)!=G.end() && B.find()!=B.end()){
+      |                                                             ^
+In file included from /usr/include/c++/9/map:61,
+                 from /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h:81,
+                 from RGB_Queries.cpp:1:
+/usr/include/c++/9/bits/stl_map.h:1193:7: note: candidate: ‘std::map<_Key, _Tp, _Compare, _Alloc>::const_iterator std::map<_Key, _Tp, _Compare, _Alloc>::find(const key_type&) const [with _Key = int; _Tp = std::vector<int>; _Compare = std::less<int>; _Alloc = std::allocator<std::pair<const int, std::vector<int> > >; std::map<_Key, _Tp, _Compare, _Alloc>::const_iterator = std::_Rb_tree_const_iterator<std::pair<const int, std::vector<int> > >; std::map<_Key, _Tp, _Compare, _Alloc>::key_type = int]’
+ 1193 |       find(const key_type& __x) const
+      |       ^~~~
+/usr/include/c++/9/bits/stl_map.h:1193:7: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/9/bits/stl_map.h:1199:2: note: candidate: ‘template<class _Kt> decltype (((const std::map<_Key, _Tp, _Compare, _Alloc>*)this)->std::map<_Key, _Tp, _Compare, _Alloc>::_M_t._M_find_tr(__x)) std::map<_Key, _Tp, _Compare, _Alloc>::find(const _Kt&) const [with _Kt = _Kt; _Key = int; _Tp = std::vector<int>; _Compare = std::less<int>; _Alloc = std::allocator<std::pair<const int, std::vector<int> > >]’
+ 1199 |  find(const _Kt& __x) const -> decltype(_M_t._M_find_tr(__x))
+      |  ^~~~
+/usr/include/c++/9/bits/stl_map.h:1199:2: note:   template argument deduction/substitution failed:
+RGB_Queries.cpp:74:61: note:   candidate expects 1 argument, 0 provided
+   74 |       if(R.find(r)!=R.end() && G.find(g)!=G.end() && B.find()!=B.end()){
+      |                                                             ^
