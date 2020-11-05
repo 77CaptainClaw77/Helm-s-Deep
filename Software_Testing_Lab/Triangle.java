@@ -1,5 +1,3 @@
-import java.lang.*;
-import java.io.*;
 import java.util.*;
 public class Triangle{
     public static void main(String args[]){
@@ -30,5 +28,6 @@ public class Triangle{
 		continue;
 	    }
 	}
+	sc.close();
     }
 }
