@@ -7,7 +7,7 @@ while True:
         print("Invalid Input Type Error!")
     if locks==-1:
         break
-    if stocks<=-1 or locks<-1 or barrel<=-1:
+    if stocks<=-1 or locks<-1 or barrels<=-1:
         print("Invalid Input Out of Range Error!")
         break
     tl,ts,tb=tl+locks,ts+stocks,tb+barrels

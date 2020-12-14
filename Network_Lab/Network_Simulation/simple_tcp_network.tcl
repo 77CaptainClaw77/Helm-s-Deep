@@ -19,7 +19,7 @@ proc finish {} {
     #open nam file and run awk script on execution
     #& is used to run the task in background
     exec nam simple_tcp.nam & 
-    exec awk -f simple_tcp.awk simple_tcp.tr &
+    exec awk -f packet_count.awk simple_tcp.tr &
     #end process
     exit 0
 }
@@ -27,14 +27,24 @@ proc finish {} {
 set n0 [$ns node]
 set n1 [$ns node]
 set n2 [$ns node]
+#5 node network additions
+set n3 [$ns node]
+set n4 [$ns node]
 #set labels for ns
 $n0 label "TCP Source"
 $n2 label "TCP Sink"
-#set links between nodes
+#set links between nodes for 2 node network
+# $ns duplex-link $n0 $n1 8.0Mb 1ms DropTail
+# $ns duplex-link $n1 $n2 1.9Mb 2ms DropTail
+#links for 5 node network
 $ns duplex-link $n0 $n1 8.0Mb 1ms DropTail
-$ns duplex-link $n1 $n2 1.9Mb 2ms DropTail
+$ns duplex-link $n1 $n3 7.0Mb 1ms DropTail
+$ns duplex-link $n3 $n4 2.0Mb 1ms DropTail
+$ns duplex-link $n4 $n2 3.0Mb 1ms DropTail
 #set queue limit - optional, can be used to simulate packet drop
-$ns queue-limit $n1 $n2 5
+# $ns queue-limit $n1 $n2 15
+#queue limits for 5 node network
+$ns queue-limit $n3 $n4 5
 #declare source and sink agents for TCP
 set tcp_agent [new Agent/TCP]
 set tcpsink_agent [new Agent/TCPSink]
