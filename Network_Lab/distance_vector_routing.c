@@ -3,6 +3,7 @@
 #define MAX_NUMBER_OF_NODES 100
 typedef struct{
   int distances[MAX_NUMBER_OF_NODES];
+  int through[MAX_NUMBER_OF_NODES];
 }node;
 int main(int argc, char *argv[])
 {
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
       nodeset[i].distances[j]=cost[i][j];
       if(i==j)
 	nodeset[i].distances[j]=0;
+      nodeset[i].through[j]=i;
     }
   }
   int updation_count;
@@ -29,6 +31,7 @@ int main(int argc, char *argv[])
 	  if(nodeset[i].distances[j]>nodeset[i].distances[k]+nodeset[k].distances[j]){
 	    updation_count++;
 	    nodeset[i].distances[j]=nodeset[i].distances[k]+nodeset[k].distances[j];
+	    nodeset[i].through[j]=k;
 	  }
 	}
       }
@@ -37,7 +40,7 @@ int main(int argc, char *argv[])
   for(i=0;i<n;i++){
     printf("%c's table\n",'a'+i);
     for(j=0;j<n;j++){
-      printf("%c->%c: %d\n",'a'+i,'a'+j,nodeset[i].distances[j]);
+      printf("%c->%c: %d through %c\n",'a'+i,'a'+j,nodeset[i].distances[j],'a'+nodeset[i].through[j]);
     }
   }
   return 0;

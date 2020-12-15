@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-int is_palindrome(string s){
-  for(int i=0;i<s.size()/2;i++){
-    if(s[i]!=s[s.size()-1-i])
+int is_palindrome(string s){ //if s is a palindrome returns -1 else returns index at which not equal
+  for(int i=0;i<s.size()/2;i++){//i=0...n/2
+    if(s[i]!=s[s.size()-1-i])//i!=n-1-i
       return i;
   }
   return -1;
@@ -10,17 +10,16 @@ int is_palindrome(string s){
 int main(int argc, char *argv[])
 {
   int q;
-  cin>>q;
+  cin>>q; //no of queries
   while(q--){
     string s;
-    cin>>s;
-    int r=is_palindrome(s);
+    cin>>s; //string input
+    int r=is_palindrome(s); // if r is -1 then already palindrome
     if(r==-1)
       cout<<-1;
     else{
-      string p=s.substr(0,r)+s.substr(r+1);
-      string q=s.substr(0,s.size()-1-r)+s.substr(s.size()-r);
-      //cout<<s<<" "<<r<<" "<<p<<" "<<q<<"\n";
+      string p=s.substr(0,r)+s.substr(r+1);// copy s to p by deleting ith character
+      string q=s.substr(0,s.size()-1-r)+s.substr(s.size()-r);// copy s to q by deleting n-1-ith character
       if(is_palindrome(p)==-1)
 	cout<<r;
       else if(is_palindrome(q)==-1)
