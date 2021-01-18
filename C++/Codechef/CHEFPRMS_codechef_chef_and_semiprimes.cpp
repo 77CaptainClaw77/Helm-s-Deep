@@ -1,3 +1,11 @@
+/*File Information:-
+Author: Kumarguru V
+
+Read problems statements in Hindi ,Mandarin chinese , Russian, Vietnamese and Bengali as well.
+Chef likes prime numbers. However, there is one thing he loves even more. Of course, it's semi-primes! A semi-prime number is an integer which can be expressed as a product of two distinct primes. For example, 15=3⋅515=3⋅515 = 3 \cdot 5 is a semi-prime number, but 111, 9=3⋅39=3⋅39 = 3 \cdot 3 and 555 are not.
+Chef is wondering how to check if an integer can be expressed as a sum of two (not necessarily distinct) semi-primes. Help Chef with this tough task!
+Link: https://www.codechef.com/problems/K
+*/
 #include <iostream>
 #include <vector>
 #include <set>

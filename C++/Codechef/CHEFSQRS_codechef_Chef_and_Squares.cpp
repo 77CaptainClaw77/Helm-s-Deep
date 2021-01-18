@@ -1,3 +1,11 @@
+/*File Information:-
+Author: Kumarguru V
+
+Chef started solving a lot of mathematics problems during the lockdown period.
+He was recently trying a problem related to square numbers but couldn't solve it, so needs your help.
+He has a positive number NNN, he wants to find out the smallest perfect square XXX which when added to NNN yields another perfect square number.
+Link: https://www.codechef.com/problems/CHEFSQRS
+*/
 #include <iostream>
 #include <cmath>
 using namespace std;

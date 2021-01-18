@@ -1,3 +1,10 @@
+/*File Information:-
+Author: Kumarguru V
+
+Chef has given you a sequence A[1], A[2], ..., A[N] composed of N nonnegative integer numbers. Then, for each pair (i; j) such that 1 <= i < j <= N, we have written a number that equals to A[i] xor A[j] (xor is exclusive or, "xor" in Pascal, "^" in C++). Thus, we have obtained N*(N-1)/2 numbers. Your task is to find K minimal numbers among them.
+
+Link: https://www.codechef.com/problems/XOR
+*/
 #include <iostream>
 #include <cstring>
 #include <cstdio>

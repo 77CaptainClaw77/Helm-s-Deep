@@ -1,3 +1,11 @@
+/*File Information:-
+Author: Kumarguru V
+
+Read problem statements in Hindi, Bengali, Mandarin Chinese, Russian, and Vietnamese as well.
+Appy and Chef are participating in a contest. There are NNN problems in this contest; each problem has a unique problem code between 111 and NNN inclusive. Appy and Chef decided to split the problems to solve between them ― Appy should solve the problems whose problem codes are divisible by AAA but not divisible by BBB, and Chef should solve the problems whose problem codes are divisible by BBB but not divisible by AAA (they decided to not solve the problems whose codes are divisible by both AAA and BBB).
+To win, it is necessary to solve at least KKK problems. You have to tell Appy whether they are going to win or lose.
+Link: https://www.codechef.com/problems/N
+*/
 #include <iostream>
 #include <algorithm>
 using namespace std;

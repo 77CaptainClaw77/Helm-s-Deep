@@ -1,3 +1,12 @@
+/*File Information:-
+Author: Kumarguru V
+
+"I'm a fan of anything that tries to replace actual human contact." - Sheldon.
+After years of hard work, Sheldon was finally able to develop a formula which would diminish the real human contact.  
+He found kk integers n1,n2...nkn_1,n_2...n_k . Also he found that if he could minimize the value of mm such that  ∑ki=1\sum_{i=1}^knniiCCmmii is even, where mm = ∑ki=1\sum_{i=1}^kmim_i, he would finish the real human contact.  
+Since Sheldon is busy choosing between PS-4 and XBOX-ONE, he want you to help him to calculate the minimum value of mm. 
+Link: https://www.codechef.com/problems/SUMNCR
+*/
 #include <iostream>
 #include <climits>
 using namespace std;

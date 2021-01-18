@@ -1,3 +1,16 @@
+/*File Information:-
+Author: Kumarguru V
+
+Johnny has some difficulty memorizing the small prime numbers. So, his computer science teacher has asked him to play with the following puzzle game frequently.
+The puzzle is a 3x3 board consisting of numbers from 1 to 9. The objective of the puzzle is to swap the tiles until the following final state is reached:
+1 2 3
+4 5 6
+7 8 9
+
+At each step, Johnny may swap two adjacent tiles if their sum is a prime number. Two tiles are considered adjacent if they have a common edge.
+Help Johnny to find the shortest number of steps needed to reach the goal state.
+Link: https://www.codechef.com/problems/H1
+*/
 #include <bits/stdc++.h>
 using namespace std;
 long long tenpow[]={(long long)1,(long long)1E1,(long long)1E2,(long long)1E3,(long long)1E4,(long long)1E5,(long long)1E6,(long long)1E7,(long long)1E8,(long long)1E9,(long long)1E10};

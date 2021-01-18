@@ -12,7 +12,7 @@ proc finish {} {
     close $tracefile
     exec nam congestion_window.nam &
     exec awk -f packet_count.awk congestion_window.tr &
-    exec /home/kumarguru/Documents/XGraph4.38_linux64/bin/xgraph window_file &
+    exec ~/Documents/Xgraph/XGraph4.38_linux64/bin/xgraph window_file &
     exit 0
 }
 proc plotting {tcpsource winfile} {
