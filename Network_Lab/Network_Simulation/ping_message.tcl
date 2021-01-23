@@ -42,9 +42,9 @@ set ping_agent5 [new Agent/Ping]
 $ping_agent0 set packetSize_ 50000
 $ping_agent0 set interval_ 0.00001
 $ping_agent1 set packetSize_ 30000
-$ping_agent0 set interval_ 0.00001
+$ping_agent1 set interval_ 0.00001
 $ping_agent2 set packetSize_ 41000
-$ping_agent0 set interval_ 0.00001
+$ping_agent2 set interval_ 0.00001
 
 $ns attach-agent $n0 $ping_agent0
 $ns attach-agent $n1 $ping_agent1

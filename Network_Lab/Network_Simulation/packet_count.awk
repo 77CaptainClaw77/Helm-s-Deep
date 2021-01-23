@@ -5,7 +5,7 @@ BEGIN{
     if($1=="d")
     {
 	drop_cnt++;
-	printf("%s\t%s\n",$5,$11);
+	printf("%s\t%s\n",$5,$12);
     }
 }
 END{

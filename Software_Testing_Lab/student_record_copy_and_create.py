@@ -9,7 +9,7 @@ Created on Thu Dec 17 15:04:11 2020
 import pandas as pd
 #%% Read excel file
 data=pd.read_excel("~/Desktop/StudentSheet.xlsx")
-names=[]
+dels=[]
 #%% Select records
 for i,row in data.iterrows():
     flag=False
@@ -18,7 +18,9 @@ for i,row in data.iterrows():
             flag=True
             break
     if flag: 
-        names.append(data['Student Name'][i])
+        dels.append(i)
 #%% Write data to new file
-df=pd.DataFrame(names,columns=["Student Name"])
-df.to_excel("./StudentNames.xlsx",index=False)
+data=data.drop(data.index[dels])
+data.to_excel("./StudentNames.xlsx",index=False)
+# df=pd.DataFrame(names,columns=["Student Name"])
+# df.to_excel("./StudentNames.xlsx",index=False)

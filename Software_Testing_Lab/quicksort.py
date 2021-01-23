@@ -3,7 +3,7 @@ def quicksort(arr,st,end):
     gi=end
     li=gi-1
     p=arr[st]
-    while li>0:
+    while li>st:
         if arr[li]>p:
             gi=gi-1
             arr[gi],arr[li]=arr[li],arr[gi]

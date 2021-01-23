@@ -49,10 +49,15 @@ char* check_message(char* message,char* generator){
   return status;
 }
 int main(){
-  char* bs="10111011000101101011001010011101101110"; //message to be encoded
-  char* gen="10101010101010100"; //generator
+   char* bs="10111011000101101011001010011101101110"; //message to be encoded */
+   char* gen="10101010101010100"; //generator */
+   // char bs[100],gen[100];
+  /* printf("Enter the message: "); */
+  /* scanf("%s", bs); */
+  /* printf("Enter the generator: "); */
+  /* scanf("%s",gen); */
   char* message=generate_message(bs,gen);
-  printf("Message: %s\n",message);
+  printf("Message with CRC: %s\n",message);
   printf("Result of checking: %s\n",check_message(message,gen));
   return 0;
 }

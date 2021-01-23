@@ -10,12 +10,10 @@ proc finish {} {
     close $tracefile
     close $namfile
     close $winfile
-    exec awk -f A5.awk A5.tr &
     exec nam A5.nam &
     exec ~/Documents/Xgraph/XGraph4.38_linux64/bin/xgraph A5.xg -title "Congestion Window"  &
     exit 0
 }
-
 set n1 [$ns node]
 set n2 [$ns node]
 set n3 [$ns node]
@@ -27,6 +25,7 @@ $ns queue-limit $n2 $n3 5
 $ns duplex-link-op $n2 $n3 orient right
 $ns duplex-link $n3 $n4 5Mb 2ms DropTail
 $ns duplex-link-op $n3 $n4 orient right
+$ns duplex-link-op $n1 $n2 queuePos 0.5
 Agent/TCP set nam_tracevar_ true
 Agent/TCP set window_ 20
 Agent/TCP set ssthresh_ 20

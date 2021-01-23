@@ -1,0 +1,39 @@
+<html>
+  <head> </head>
+  <body>
+    <form>
+      <label for="n1">First Number</label><input name="num1" type="number" id="n1"> <br> <br>
+      <label for="n2">Second Number</label><input name="num2" type="number" id="n2"> <br> 
+      <input type="button" onclick="gcd()" value="Compute GCD"> &nbsp; &nbsp;
+      <input type="button" onclick="clear_data()" value="Clear Fields">
+      <div id="ans"></div>
+    </form>
+    <script>
+      function clear_data(){
+	  document.getElementById("n1").value="";
+	  document.getElementById("n2").value="";
+	  document.getElementById("ans").innerText="";
+      }
+      function gcd(){
+	  num1=parseInt(document.getElementById("n1").value);
+	  num2=parseInt(document.getElementById("n2").value);
+	  if(!Number.isInteger(num1) || !Number.isInteger(num2) || num1==0 || num2==0){
+	      alert("Invalid Input");
+	      clear_data();
+	      return;
+	  }
+	  if(num1<0)
+	      num1=-num1;
+	  if(num2<0)
+	      num2=-num2;
+	  while(num2!=0){
+	      t=num2;
+	      num2=num1%num2;
+	      num1=t;
+	  }
+	  console.log("The GCD is "+num1.toString());
+	  document.getElementById("ans").innerText="The GCD is "+num1.toString();
+      }
+    </script>
+  </body>
+</html>
